@@ -1,0 +1,41 @@
+# ── 대회 데이터 (공고문 p.9: 제3자 제공·온라인 공개 금지) ────────────
+# 운영측 제공 데이터·예시 이미지·테스트 이미지는 절대 커밋하지 않는다.
+data/
+datasets/
+sample_images/
+provided/
+*.jpg
+*.jpeg
+*.png
+*.tif
+*.tiff
+*.bmp
+*.webp
+*.zip
+*.tar
+*.tar.gz
+
+# ── 모델 가중치 ──────────────────────────────────────────────
+weights/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+
+# ── 실행 산출물 ──────────────────────────────────────────────
+runs/
+outputs/
+logs/
+wandb/
+*.csv
+*.log
+
+# ── Python ──────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
