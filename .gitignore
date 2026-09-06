@@ -15,6 +15,25 @@ provided/
 *.tar
 *.tar.gz
 
+# ── 운영측 제공물 (공고문 p.4: 예시 이미지·샘플 코드 및 관련 파일) ──────
+# 받은 것은 저장소에 두지 않는다. 코드에서는 경로만 참조한다.
+baseline/
+sample_code/
+sample/
+*.hwp
+*.hwpx
+*.xlsx
+*.xls
+*.7z
+*.rar
+
+# ── 제출서류 (양식1·양식3에 팀원 개인정보 포함, 공고문 p.11·p.13) ──────
+submission/
+서류/
+*.docx
+*.doc
+*.pptx
+
 # ── 모델 가중치 ──────────────────────────────────────────────
 weights/
 checkpoints/
