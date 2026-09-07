@@ -30,17 +30,20 @@ o.append(f'<line x1="1050" y1="128" x2="1050" y2="160" stroke="{LINE}" stroke-wi
 o.append(f'<line x1="340" y1="128" x2="340" y2="160" stroke="{LINE}" stroke-width="2.4" marker-end="url(#a)"/>')
 
 # 축 A
-rect(60,168,560,300,AB,A)
+rect(60,168,560,320,AB,A)
 o.append(f'<rect x="60" y="168" width="560" height="46" rx="10" fill="{A}"/>')
 o.append(f'<rect x="60" y="196" width="560" height="18" fill="{A}"/>')
 txt(84,200,"축 A · 생성 흔적",23,"#FFFFFF","800")
 txt(596,200,"원본 전체를 본다",14,"#CCFBF1","400","end")
-for i,(c,n,d) in enumerate([("A1","VAE 재구성 오차","확산 · 플로우매칭 · 증류"),
-                            ("A2","주파수 이상","GAN"),
-                            ("A4","마스크 안팎 대조","합성 유형 ①②"),
-                            ("A5","전역 분류기","전 유형 안전망")]):
-    y=254+i*54
-    txt(84,y,c,19,A,"800"); txt(128,y,n,19,INK,"700"); txt(360,y,d,15,SUB)
+y=254
+for c,n,dd in [("A1","VAE 재구성 오차",["확산 · 플로우매칭 · 증류"]),
+               ("A2","주파수 이상",["GAN"]),
+               ("A4","마스크 안팎 대조",["실험실 작물 + 현장 배경 결합",
+                                        "현장 작물 + 다른 현장 배경 결합"]),
+               ("A5","전역 분류기",["전 유형 안전망"])]:
+    txt(84,y,c,19,A,"800"); txt(128,y,n,19,INK,"700")
+    for j,d in enumerate(dd): txt(310,y+j*21,d,14,SUB)
+    y += 54 if len(dd)==1 else 76
 
 # 작물 분할
 rect(760,168,580,78,"#111827","#111827")
@@ -65,7 +68,7 @@ for i,(c,n) in enumerate([("B1","잎맥 위상 구조"),("B2","시설 구조물 
 txt(784,532,"실제 이미지만으로 학습  →  미지 생성 모델과 무관 · 재압축에 강함",14,SUB)
 
 # 수렴
-o.append(f'<path d="M340,468 V596 M1050,550 V596 M340,596 H1050" fill="none" stroke="{LINE}" stroke-width="2.4"/>')
+o.append(f'<path d="M340,488 V596 M1050,550 V596 M340,596 H1050" fill="none" stroke="{LINE}" stroke-width="2.4"/>')
 o.append(f'<line x1="695" y1="596" x2="695" y2="626" stroke="{LINE}" stroke-width="2.4" marker-end="url(#a)"/>')
 
 # 가중합
