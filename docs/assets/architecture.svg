@@ -1,169 +1,207 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1480" height="1200" viewBox="0 0 1480 1200">
-<defs><marker id="ah" markerWidth="9" markerHeight="9" refX="4.5" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#94A3B8"/></marker><marker id="ahd" markerWidth="9" markerHeight="9" refX="4.5" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#0F766E"/></marker></defs>
-<rect x="0" y="0" width="1480" height="1200" rx="0" fill="#FFFFFF"/>
-<text x="40" y="52" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="26" fill="#0F172A" font-weight="800" text-anchor="start" letter-spacing="0" opacity="1">시설작물 이미지 신뢰성 판별 — 시스템 구조</text>
-<text x="40" y="80" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="14" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">생성 계열별 전문 지표 + 전역 판별 모델 → 가중합 → 임계값 판정</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1480" height="1372" viewBox="0 0 1480 1372">
+<defs><marker id="ah" markerWidth="9" markerHeight="9" refX="4.5" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#94A3B8"/></marker><marker id="ag" markerWidth="9" markerHeight="9" refX="4.5" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#15803D"/></marker><marker id="at" markerWidth="9" markerHeight="9" refX="4.5" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#0F766E"/></marker><marker id="ab" markerWidth="9" markerHeight="9" refX="4.5" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#1D4ED8"/></marker></defs>
+<rect x="0" y="0" width="1480" height="1372" rx="0" fill="#FFFFFF"/>
+<text x="40" y="52" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="26" fill="#0F172A" font-weight="800" text-anchor="start" letter-spacing="0">시설작물 이미지 신뢰성 판별 — 시스템 구조</text>
+<text x="40" y="80" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="14" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">생성 흔적(축 A) + 농업적 정합성(축 B) 두 축을 가중합해 판정 · 작물 분할은 1회, 용도는 2개</text>
 <line x1="40" y1="100" x2="1440" y2="100" stroke="#E2E8F0" stroke-width="1.2"/>
-<rect x="480" y="124" width="520" height="46" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.4"/>
-<text x="740" y="153" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="13.5" fill="#0F172A" font-weight="700" text-anchor="middle" letter-spacing="0" opacity="1">입력 이미지 — 원본 해상도 유지 (리사이즈 금지, 크롭만 사용)</text>
-<line x1="740" y1="170" x2="740" y2="189" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#ah)"/>
-<rect x="390" y="196" width="700" height="58" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4" stroke-dasharray="5 4"/>
-<text x="740" y="220" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="13.5" fill="#0F172A" font-weight="700" text-anchor="middle" letter-spacing="0" opacity="1">[0] 작물 종 라우팅  —  조건부 (종 구성 확정 시)</text>
-<text x="740" y="240" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#64748B" font-weight="400" text-anchor="middle" letter-spacing="0" opacity="1">종 분류기 → 종별 경량 어댑터  ·  라우터 실패 시 전역 어댑터로 폴백</text>
-<line x1="740" y1="254" x2="740" y2="279" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#ah)"/>
-<text x="42" y="304" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="12.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0.2" opacity="1">[ 1 ]  계열별 전문 지표 — 각 계열이 이미지를 만드는 방식에서 유도</text>
-<text x="1178" y="304" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="12.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0.2" opacity="1">[ 2 ]  전역 판별 모델</text>
-<line x1="42" y1="312" x2="1150" y2="312" stroke="#E2E8F0" stroke-width="1.2"/>
-<line x1="1178" y1="312" x2="1440" y2="312" stroke="#E2E8F0" stroke-width="1.2"/>
-<rect x="42" y="326" width="262" height="250" rx="8" fill="#F0FDFA" stroke="#0F766E" stroke-width="1.6"/>
-<path d="M42,334 a8,8 0 0 1 8,-8 h246 a8,8 0 0 1 8,8 v26 h-262 z" fill="#0F766E"/>
-<text x="58" y="350" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="16.5" fill="#FFFFFF" font-weight="800" text-anchor="start" letter-spacing="0" opacity="1">S1</text>
-<text x="89" y="350" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="14" fill="#FFFFFF" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">잠재-디코더</text>
-<text x="58" y="384" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#0F766E" font-weight="700" text-anchor="start" letter-spacing="1.2" opacity="1">겨냥</text>
-<text x="58" y="401" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">확산-잠재 · 플로우 매칭</text>
-<text x="58" y="417" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">증류 · 잠재 인페인팅</text>
-<text x="58" y="445" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#0F766E" font-weight="700" text-anchor="start" letter-spacing="1.2" opacity="1">판별 원리</text>
-<text x="58" y="463.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">잠재 생성 모델의 출력은</text>
-<text x="58" y="478.5" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">예외 없이 VAE 디코더를</text>
-<text x="58" y="494.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">통과한다. 그 디코더로</text>
-<text x="58" y="509.5" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">재구성하면 자기 계열</text>
-<text x="58" y="525.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">생성물을 더 정확히 복원</text>
-<rect x="58" y="543" width="62" height="19" rx="9" fill="#FFFFFF" stroke="#0F766E" stroke-width="1"/>
-<text x="89" y="556" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#0F766E" font-weight="700" text-anchor="middle" letter-spacing="0" opacity="1">학습 불요</text>
-<text x="128" y="556" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#64748B" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">1순위</text>
-<rect x="324" y="326" width="262" height="250" rx="8" fill="#EFF6FF" stroke="#1D4ED8" stroke-width="1.6"/>
-<path d="M324,334 a8,8 0 0 1 8,-8 h246 a8,8 0 0 1 8,8 v26 h-262 z" fill="#1D4ED8"/>
-<text x="340" y="350" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="16.5" fill="#FFFFFF" font-weight="800" text-anchor="start" letter-spacing="0" opacity="1">S3</text>
-<text x="371" y="350" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="14" fill="#FFFFFF" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">영역 대조</text>
-<text x="340" y="384" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#1D4ED8" font-weight="700" text-anchor="start" letter-spacing="1.2" opacity="1">겨냥</text>
-<text x="340" y="401" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">편집·합성 (픽셀 공간)</text>
-<text x="340" y="417" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">= 공고문 유형 ①②</text>
-<text x="340" y="445" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#1D4ED8" font-weight="700" text-anchor="start" letter-spacing="1.2" opacity="1">판별 원리</text>
-<text x="340" y="463.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">픽셀 합성은 배경을 건드</text>
-<text x="340" y="478.5" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">리지 않으므로 작물 마스크</text>
-<text x="340" y="494.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">안팎의 노이즈·색온도·</text>
-<text x="340" y="509.5" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">초점·조명·압축 이력이</text>
-<text x="340" y="525.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">서로 어긋난다</text>
-<rect x="340" y="543" width="62" height="19" rx="9" fill="#FFFFFF" stroke="#1D4ED8" stroke-width="1"/>
-<text x="371" y="556" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#1D4ED8" font-weight="700" text-anchor="middle" letter-spacing="0" opacity="1">자체 학습</text>
-<text x="410" y="556" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#64748B" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">2순위</text>
-<rect x="606" y="326" width="262" height="250" rx="8" fill="#F5F3FF" stroke="#6D28D9" stroke-width="1.6"/>
-<path d="M606,334 a8,8 0 0 1 8,-8 h246 a8,8 0 0 1 8,8 v26 h-262 z" fill="#6D28D9"/>
-<text x="622" y="350" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="16.5" fill="#FFFFFF" font-weight="800" text-anchor="start" letter-spacing="0" opacity="1">S2</text>
-<text x="653" y="350" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="14" fill="#FFFFFF" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">스펙트럼</text>
-<text x="622" y="384" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#6D28D9" font-weight="700" text-anchor="start" letter-spacing="1.2" opacity="1">겨냥</text>
-<text x="622" y="401" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">GAN · 픽셀 확산</text>
-<text x="622" y="429" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#6D28D9" font-weight="700" text-anchor="start" letter-spacing="1.2" opacity="1">판별 원리</text>
-<text x="622" y="447.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">업샘플 연산이 주파수</text>
-<text x="622" y="462.5" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">영역에 스펙트럼 복제를</text>
-<text x="622" y="478.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">남기고, 생성 이미지는</text>
-<text x="622" y="493.5" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">자연 이미지의 고주파</text>
-<text x="622" y="509.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">감쇠 곡선을 못 따라간다</text>
-<rect x="622" y="543" width="62" height="19" rx="9" fill="#FFFFFF" stroke="#6D28D9" stroke-width="1"/>
-<text x="653" y="556" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#6D28D9" font-weight="700" text-anchor="middle" letter-spacing="0" opacity="1">학습 불요</text>
-<text x="692" y="556" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#64748B" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">3순위</text>
-<rect x="888" y="326" width="262" height="250" rx="8" fill="#F8FAFC" stroke="#64748B" stroke-width="1.6"/>
-<path d="M888,334 a8,8 0 0 1 8,-8 h246 a8,8 0 0 1 8,8 v26 h-262 z" fill="#64748B"/>
-<text x="904" y="350" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="16.5" fill="#FFFFFF" font-weight="800" text-anchor="start" letter-spacing="0" opacity="1">S4</text>
-<text x="935" y="350" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="14" fill="#FFFFFF" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">양자화</text>
-<text x="904" y="384" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#64748B" font-weight="700" text-anchor="start" letter-spacing="1.2" opacity="1">겨냥</text>
-<text x="904" y="401" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">오토리그레시브</text>
-<text x="904" y="417" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">(토큰 예측 방식)</text>
-<text x="904" y="445" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#64748B" font-weight="700" text-anchor="start" letter-spacing="1.2" opacity="1">판별 원리</text>
-<text x="904" y="463.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">유한 코드북으로 양자화</text>
-<text x="904" y="478.5" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">하므로 그 오차의 구조가</text>
-<text x="904" y="494.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">실제 촬영 이미지와</text>
-<text x="904" y="509.5" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">다르다. 노이즈에서</text>
-<text x="904" y="525.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">출발하지 않는 계열</text>
-<rect x="904" y="543" width="62" height="19" rx="9" fill="#FFFFFF" stroke="#64748B" stroke-width="1"/>
-<text x="935" y="556" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#64748B" font-weight="700" text-anchor="middle" letter-spacing="0" opacity="1">학습 불요</text>
-<text x="974" y="556" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#64748B" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">선택</text>
-<rect x="1178" y="326" width="262" height="250" rx="8" fill="#FFF7ED" stroke="#C2410C" stroke-width="1.6"/>
-<path d="M1178,334 a8,8 0 0 1 8,-8 h246 a8,8 0 0 1 8,8 v26 h-262 z" fill="#C2410C"/>
-<text x="1194" y="350" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="16.5" fill="#FFFFFF" font-weight="800" text-anchor="start" letter-spacing="0" opacity="1">S5</text>
-<text x="1225" y="350" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="14" fill="#FFFFFF" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">전역 판별 모델</text>
-<text x="1194" y="384" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#C2410C" font-weight="700" text-anchor="start" letter-spacing="1.2" opacity="1">겨냥</text>
-<text x="1194" y="401" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">전 유형 (안전망)</text>
-<text x="1194" y="429" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#C2410C" font-weight="700" text-anchor="start" letter-spacing="1.2" opacity="1">판별 원리</text>
-<text x="1194" y="447.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">계열 지식 없이 이미지를</text>
-<text x="1194" y="462.5" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">통째로 입력받는 학습</text>
-<text x="1194" y="478.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">기반 이진 분류.</text>
-<text x="1194" y="493.5" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">계열 지표가 원리적으로</text>
-<text x="1194" y="509.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">놓치는 것을 받아낸다</text>
-<rect x="1194" y="543" width="62" height="19" rx="9" fill="#FFFFFF" stroke="#C2410C" stroke-width="1"/>
-<text x="1225" y="556" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#C2410C" font-weight="700" text-anchor="middle" letter-spacing="0" opacity="1">파인튜닝</text>
-<text x="1264" y="556" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#64748B" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">1주차 단독 제출</text>
-<line x1="173.0" y1="576" x2="173.0" y2="606" stroke="#94A3B8" stroke-width="1.6"/>
-<line x1="455.0" y1="576" x2="455.0" y2="606" stroke="#94A3B8" stroke-width="1.6"/>
-<line x1="737.0" y1="576" x2="737.0" y2="606" stroke="#94A3B8" stroke-width="1.6"/>
-<line x1="1019.0" y1="576" x2="1019.0" y2="606" stroke="#94A3B8" stroke-width="1.6"/>
-<line x1="1309.0" y1="576" x2="1309.0" y2="606" stroke="#94A3B8" stroke-width="1.6"/>
-<line x1="173.0" y1="606" x2="1309.0" y2="606" stroke="#94A3B8" stroke-width="1.6"/>
-<line x1="740" y1="606" x2="740" y2="633" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#ah)"/>
-<rect x="390" y="640" width="700" height="62" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.4"/>
-<text x="740" y="667" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="14.5" fill="#0F172A" font-weight="800" text-anchor="middle" letter-spacing="0" opacity="1">[3]   score  =  w1·S1 + w2·S2 + w3·S3 + w4·S4 + w5·S5</text>
-<text x="740" y="687" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#64748B" font-weight="400" text-anchor="middle" letter-spacing="0" opacity="1">가중치 w 는 Leave-One-Generator-Out 교차검증으로 결정 · 각 지표는 검증셋 기준 정규화 후 합산</text>
-<line x1="740" y1="702" x2="740" y2="727" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#ah)"/>
-<rect x="540" y="734" width="400" height="44" rx="22" fill="#0F172A"/>
-<text x="740" y="762" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="15" fill="#FFFFFF" font-weight="700" text-anchor="middle" letter-spacing="0" opacity="1">score ≥ 임계값 τ   →   생성 이미지</text>
-<line x1="40" y1="796" x2="1440" y2="796" stroke="#E2E8F0" stroke-width="1.2"/>
-<text x="40" y="826" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="17" fill="#0F172A" font-weight="800" text-anchor="start" letter-spacing="0" opacity="1">핵심 근거 — 왜 이렇게 나누는가</text>
-<rect x="40" y="848" width="690" height="280" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4"/>
-<rect x="40" y="848" width="5" height="280" rx="2.5" fill="#0F766E"/>
-<text x="62" y="878" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="13.5" fill="#0F766E" font-weight="800" text-anchor="start" letter-spacing="0" opacity="1">① VAE 디코더는 생성 계열을 가로지르는 공용 부품이다</text>
-<rect x="62" y="906" width="236" height="26" rx="6" fill="#F0FDFA" stroke="#0F766E" stroke-width="1"/>
-<text x="74" y="924" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#0F766E" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">확산-잠재  (SD1.5 · SDXL)</text>
-<line x1="298" y1="919" x2="340" y2="919" stroke="#0F766E" stroke-width="1.2"/>
-<rect x="62" y="940" width="236" height="26" rx="6" fill="#F0FDFA" stroke="#0F766E" stroke-width="1"/>
-<text x="74" y="958" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#0F766E" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">플로우 매칭  (SD3 · FLUX)</text>
-<line x1="298" y1="953" x2="340" y2="953" stroke="#0F766E" stroke-width="1.2"/>
-<rect x="62" y="974" width="236" height="26" rx="6" fill="#F0FDFA" stroke="#0F766E" stroke-width="1"/>
-<text x="74" y="992" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#0F766E" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">증류·소수스텝  (Turbo · schnell)</text>
-<line x1="298" y1="987" x2="340" y2="987" stroke="#0F766E" stroke-width="1.2"/>
-<rect x="62" y="1008" width="236" height="26" rx="6" fill="#F0FDFA" stroke="#0F766E" stroke-width="1"/>
-<text x="74" y="1026" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#0F766E" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">잠재 인페인팅  (유형 ①②의 절반)</text>
-<line x1="298" y1="1021" x2="340" y2="1021" stroke="#0F766E" stroke-width="1.2"/>
-<line x1="340" y1="919" x2="340" y2="1021" stroke="#0F766E" stroke-width="1.6"/>
-<line x1="340" y1="961" x2="392" y2="961" stroke="#0F766E" stroke-width="2" marker-end="url(#ahd)"/>
-<rect x="402" y="936" width="150" height="52" rx="8" fill="#0F766E"/>
-<text x="477" y="958" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="13" fill="#FFFFFF" font-weight="800" text-anchor="middle" letter-spacing="0" opacity="1">VAE 디코더</text>
-<text x="477" y="976" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10" fill="#CCFBF1" font-weight="400" text-anchor="middle" letter-spacing="0" opacity="1">(잠재 → 픽셀)</text>
-<line x1="552" y1="961" x2="600" y2="961" stroke="#0F766E" stroke-width="2" marker-end="url(#ahd)"/>
-<text x="608" y="965" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">출력 픽셀</text>
-<line x1="477" y1="1024" x2="477" y2="996" stroke="#0F766E" stroke-width="2"/>
-<line x1="477" y1="1024" x2="477" y2="994" stroke="#0F766E" stroke-width="2" marker-end="url(#ahd)"/>
-<rect x="412" y="1026" width="130" height="24" rx="12" fill="#FFFFFF" stroke="#0F766E" stroke-width="1.5"/>
-<text x="477" y="1043" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#0F766E" font-weight="800" text-anchor="middle" letter-spacing="0" opacity="1">S1 이 여기를 본다</text>
-<text x="62" y="1088" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">지표 하나가 네 계열을 동시에 겨냥한다. 운영측 생성기가 비공개라는</text>
-<text x="62" y="1105" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">본 대회의 근본 난제에 대한 우리의 주된 대비책이다.</text>
-<rect x="750" y="848" width="690" height="280" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4"/>
-<rect x="750" y="848" width="5" height="280" rx="2.5" fill="#1D4ED8"/>
-<text x="772" y="878" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="13.5" fill="#1D4ED8" font-weight="800" text-anchor="start" letter-spacing="0" opacity="1">② 유형 ①②는 두 갈래로 갈리고, 탐지 원리가 정반대다</text>
-<rect x="772" y="898" width="120" height="40" rx="8" fill="#0F172A"/>
-<text x="832" y="916" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#FFFFFF" font-weight="700" text-anchor="middle" letter-spacing="0" opacity="1">공고문</text>
-<text x="832" y="931" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="12.5" fill="#FFFFFF" font-weight="800" text-anchor="middle" letter-spacing="0" opacity="1">유형 ①②</text>
-<line x1="892" y1="918" x2="922" y2="918" stroke="#94A3B8" stroke-width="1.6"/>
-<line x1="922" y1="918" x2="922" y2="1016" stroke="#94A3B8" stroke-width="1.6"/>
-<line x1="922" y1="922" x2="954" y2="922" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ah)"/>
-<rect x="962" y="900" width="300" height="46" rx="7" fill="#EFF6FF" stroke="#1D4ED8" stroke-width="1.4"/>
-<text x="976" y="919" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#1D4ED8" font-weight="800" text-anchor="start" letter-spacing="0" opacity="1">G-1</text>
-<text x="1012" y="919" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="12" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">픽셀 공간 합성</text>
-<text x="976" y="936" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#64748B" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">알파 · Poisson · 하모나이제이션</text>
-<line x1="1262" y1="922" x2="1302" y2="922" stroke="#1D4ED8" stroke-width="2" marker-end="url(#ah)"/>
-<rect x="1310" y="906" width="60" height="32" rx="7" fill="#1D4ED8"/>
-<text x="1340" y="927" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="15" fill="#FFFFFF" font-weight="800" text-anchor="middle" letter-spacing="0" opacity="1">S3</text>
-<text x="962" y="964" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#1D4ED8" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">배경 픽셀을 건드리지 않는다  →  영역 간 불일치가 남는다</text>
-<line x1="922" y1="1016" x2="954" y2="1016" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#ah)"/>
-<rect x="962" y="994" width="300" height="46" rx="7" fill="#F0FDFA" stroke="#0F766E" stroke-width="1.4"/>
-<text x="976" y="1013" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#0F766E" font-weight="800" text-anchor="start" letter-spacing="0" opacity="1">G-2</text>
-<text x="1012" y="1013" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="12" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">잠재 공간 재생성</text>
-<text x="976" y="1030" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#64748B" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">SD 인페인팅 · img2img</text>
-<line x1="1262" y1="1016" x2="1302" y2="1016" stroke="#0F766E" stroke-width="2" marker-end="url(#ah)"/>
-<rect x="1310" y="1000" width="60" height="32" rx="7" fill="#0F766E"/>
-<text x="1340" y="1021" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="15" fill="#FFFFFF" font-weight="800" text-anchor="middle" letter-spacing="0" opacity="1">S1</text>
-<text x="962" y="1058" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#0F766E" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">마스크 밖까지 전체 재디코딩  →  영역 대조가 무력해진다</text>
-<text x="772" y="1088" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">둘 중 하나만으로는 유형 ①②의 절반만 잡는다. S1과 S3는 경쟁이</text>
-<text x="772" y="1105" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">아니라 상호 보완 관계이며, 검증도 G-1/G-2로 쪼개서 측정한다.</text>
-<text x="40" y="1178" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#64748B" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">제1회 전국 농과계 대학 농업 AI 경진대회 · 이미지 데이터 신뢰성 판별 미션</text>
-<text x="1440" y="1178" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#64748B" font-weight="400" text-anchor="end" letter-spacing="0" opacity="1">2026-09-07</text>
+<rect x="460" y="122" width="560" height="44" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.4"/>
+<text x="740" y="150" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="13.5" fill="#0F172A" font-weight="700" text-anchor="middle" letter-spacing="0">입력 이미지 — 원본 해상도 유지 (리사이즈 금지, 크롭만 사용)</text>
+<line x1="740" y1="166" x2="740" y2="189" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="41" y="214" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="15" fill="#0F172A" font-weight="800" text-anchor="start" letter-spacing="0">축 A · 생성 흔적</text>
+<text x="180" y="214" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#64748B" font-weight="400" text-anchor="start" letter-spacing="0">각 생성 계열이 이미지를 만드는 방식에서 지표를 유도 · 원본 전체를 본다</text>
+<line x1="41" y1="224" x2="1439" y2="224" stroke="#E2E8F0" stroke-width="1.2"/>
+<rect x="41" y="238" width="262" height="214" rx="8" fill="#F0FDFA" stroke="#0F766E" stroke-width="1.6"/>
+<path d="M41,246 a8,8 0 0 1 8,-8 h246 a8,8 0 0 1 8,8 v26 h-262 z" fill="#0F766E"/>
+<text x="56" y="262" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="16.5" fill="#FFFFFF" font-weight="800" text-anchor="start" letter-spacing="0">A1</text>
+<text x="87" y="262" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="14" fill="#FFFFFF" font-weight="700" text-anchor="start" letter-spacing="0">잠재-디코더</text>
+<text x="56" y="294" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#0F766E" font-weight="700" text-anchor="start" letter-spacing="1.2">겨냥</text>
+<text x="56" y="311" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0">확산-U-Net · 플로우매칭(DiT)</text>
+<text x="56" y="327" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0">증류 · 잠재 인페인팅</text>
+<text x="56" y="355" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#0F766E" font-weight="700" text-anchor="start" letter-spacing="1.2">판별 원리</text>
+<text x="56" y="373.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">잠재 생성 모델의 출력은</text>
+<text x="56" y="388.5" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">예외 없이 VAE 디코더를</text>
+<text x="56" y="404.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">통과한다. 재구성 오차가</text>
+<text x="56" y="419.5" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">실제 촬영물보다 작다</text>
+<rect x="56" y="421" width="62" height="19" rx="9" fill="#FFFFFF" stroke="#0F766E" stroke-width="1"/>
+<text x="87" y="434" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#0F766E" font-weight="700" text-anchor="middle" letter-spacing="0">학습 불요</text>
+<text x="126" y="434" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#64748B" font-weight="700" text-anchor="start" letter-spacing="0">1순위</text>
+<rect x="325" y="238" width="262" height="214" rx="8" fill="#EFF6FF" stroke="#1D4ED8" stroke-width="1.6"/>
+<path d="M325,246 a8,8 0 0 1 8,-8 h246 a8,8 0 0 1 8,8 v26 h-262 z" fill="#1D4ED8"/>
+<text x="340" y="262" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="16.5" fill="#FFFFFF" font-weight="800" text-anchor="start" letter-spacing="0">A4</text>
+<text x="371" y="262" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="14" fill="#FFFFFF" font-weight="700" text-anchor="start" letter-spacing="0">영역 대조</text>
+<text x="340" y="294" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#1D4ED8" font-weight="700" text-anchor="start" letter-spacing="1.2">겨냥</text>
+<text x="340" y="311" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0">픽셀 공간 합성</text>
+<text x="340" y="327" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0">= 공고문 유형 ①②</text>
+<text x="340" y="355" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#1D4ED8" font-weight="700" text-anchor="start" letter-spacing="1.2">판별 원리</text>
+<text x="340" y="373.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">배경을 건드리지 않으므로</text>
+<text x="340" y="388.5" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">마스크 안팎의 노이즈·색온도·</text>
+<text x="340" y="404.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">초점·조명·압축 이력이</text>
+<text x="340" y="419.5" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">서로 어긋난다</text>
+<rect x="340" y="421" width="62" height="19" rx="9" fill="#FFFFFF" stroke="#1D4ED8" stroke-width="1"/>
+<text x="371" y="434" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#1D4ED8" font-weight="700" text-anchor="middle" letter-spacing="0">자체 학습</text>
+<text x="410" y="434" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#64748B" font-weight="700" text-anchor="start" letter-spacing="0">2순위</text>
+<rect x="495" y="278" width="84" height="20" rx="10" fill="#FFFFFF" stroke="#1D4ED8" stroke-width="1.3"/>
+<text x="537" y="292" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#1D4ED8" font-weight="800" text-anchor="middle" letter-spacing="0">마스크 사용</text>
+<rect x="609" y="238" width="262" height="214" rx="8" fill="#F5F3FF" stroke="#6D28D9" stroke-width="1.6"/>
+<path d="M609,246 a8,8 0 0 1 8,-8 h246 a8,8 0 0 1 8,8 v26 h-262 z" fill="#6D28D9"/>
+<text x="624" y="262" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="16.5" fill="#FFFFFF" font-weight="800" text-anchor="start" letter-spacing="0">A2</text>
+<text x="655" y="262" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="14" fill="#FFFFFF" font-weight="700" text-anchor="start" letter-spacing="0">스펙트럼</text>
+<text x="624" y="294" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#6D28D9" font-weight="700" text-anchor="start" letter-spacing="1.2">겨냥</text>
+<text x="624" y="311" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0">GAN · 픽셀 확산</text>
+<text x="624" y="339" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#6D28D9" font-weight="700" text-anchor="start" letter-spacing="1.2">판별 원리</text>
+<text x="624" y="357.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">업샘플이 주파수 영역에</text>
+<text x="624" y="372.5" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">스펙트럼 복제를 남기고,</text>
+<text x="624" y="388.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">자연 이미지의 고주파</text>
+<text x="624" y="403.5" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">감쇠 곡선을 못 따라간다</text>
+<rect x="624" y="421" width="62" height="19" rx="9" fill="#FFFFFF" stroke="#6D28D9" stroke-width="1"/>
+<text x="655" y="434" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#6D28D9" font-weight="700" text-anchor="middle" letter-spacing="0">학습 불요</text>
+<text x="694" y="434" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#64748B" font-weight="700" text-anchor="start" letter-spacing="0">3순위</text>
+<rect x="893" y="238" width="262" height="214" rx="8" fill="#F8FAFC" stroke="#64748B" stroke-width="1.6"/>
+<path d="M893,246 a8,8 0 0 1 8,-8 h246 a8,8 0 0 1 8,8 v26 h-262 z" fill="#64748B"/>
+<text x="908" y="262" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="16.5" fill="#FFFFFF" font-weight="800" text-anchor="start" letter-spacing="0">A3</text>
+<text x="939" y="262" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="14" fill="#FFFFFF" font-weight="700" text-anchor="start" letter-spacing="0">양자화</text>
+<text x="908" y="294" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#64748B" font-weight="700" text-anchor="start" letter-spacing="1.2">겨냥</text>
+<text x="908" y="311" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0">오토리그레시브</text>
+<text x="908" y="327" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0">(토큰 예측)</text>
+<text x="908" y="355" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#64748B" font-weight="700" text-anchor="start" letter-spacing="1.2">판별 원리</text>
+<text x="908" y="373.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">유한 코드북 양자화 오차의</text>
+<text x="908" y="388.5" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">구조가 다르다. 노이즈에서</text>
+<text x="908" y="404.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">출발하지 않아 A1·A2가</text>
+<text x="908" y="419.5" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">원리적으로 통하지 않는다</text>
+<rect x="908" y="421" width="62" height="19" rx="9" fill="#FFFFFF" stroke="#64748B" stroke-width="1"/>
+<text x="939" y="434" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#64748B" font-weight="700" text-anchor="middle" letter-spacing="0">학습 불요</text>
+<text x="978" y="434" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#64748B" font-weight="700" text-anchor="start" letter-spacing="0">선택</text>
+<rect x="1177" y="238" width="262" height="214" rx="8" fill="#FFF7ED" stroke="#C2410C" stroke-width="1.6"/>
+<path d="M1177,246 a8,8 0 0 1 8,-8 h246 a8,8 0 0 1 8,8 v26 h-262 z" fill="#C2410C"/>
+<text x="1192" y="262" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="16.5" fill="#FFFFFF" font-weight="800" text-anchor="start" letter-spacing="0">A5</text>
+<text x="1223" y="262" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="14" fill="#FFFFFF" font-weight="700" text-anchor="start" letter-spacing="0">전역 판별 모델</text>
+<text x="1192" y="294" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#C2410C" font-weight="700" text-anchor="start" letter-spacing="1.2">겨냥</text>
+<text x="1192" y="311" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0">전 유형 (안전망)</text>
+<text x="1192" y="339" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#C2410C" font-weight="700" text-anchor="start" letter-spacing="1.2">판별 원리</text>
+<text x="1192" y="357.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">계열 지식 없이 이미지를</text>
+<text x="1192" y="372.5" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">통째로 입력받는 학습</text>
+<text x="1192" y="388.0" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">기반 이진 분류. 지표가</text>
+<text x="1192" y="403.5" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">놓치는 것을 받아낸다</text>
+<rect x="1192" y="421" width="62" height="19" rx="9" fill="#FFFFFF" stroke="#C2410C" stroke-width="1"/>
+<text x="1223" y="434" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#C2410C" font-weight="700" text-anchor="middle" letter-spacing="0">파인튜닝</text>
+<text x="1262" y="434" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#64748B" font-weight="700" text-anchor="start" letter-spacing="0">1주차 단독</text>
+<line x1="172.0" y1="452" x2="172.0" y2="470" stroke="#94A3B8" stroke-width="1.6"/>
+<line x1="456.0" y1="452" x2="456.0" y2="470" stroke="#94A3B8" stroke-width="1.6"/>
+<line x1="740.0" y1="452" x2="740.0" y2="470" stroke="#94A3B8" stroke-width="1.6"/>
+<line x1="1024.0" y1="452" x2="1024.0" y2="470" stroke="#94A3B8" stroke-width="1.6"/>
+<line x1="1308.0" y1="452" x2="1308.0" y2="470" stroke="#94A3B8" stroke-width="1.6"/>
+<line x1="172.0" y1="470" x2="1308.0" y2="470" stroke="#94A3B8" stroke-width="1.6"/>
+<rect x="520" y="486" width="440" height="52" rx="9" fill="#0F172A"/>
+<text x="740" y="508" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="13" fill="#FFFFFF" font-weight="800" text-anchor="middle" letter-spacing="0">작물 분할 (SAM 계열, Apache-2.0)  →  마스크 M</text>
+<text x="740" y="526" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#94A3B8" font-weight="400" text-anchor="middle" letter-spacing="0">1회 실행 · 실패 시 균일 패치 격자로 폴백</text>
+<path d="M960,512 H1010 V464 H456 V452" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#ab)"/>
+<text x="1018" y="506" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#1D4ED8" font-weight="800" text-anchor="start" letter-spacing="0">영역 정의 → A4</text>
+<line x1="740" y1="538" x2="740" y2="568" stroke="#15803D" stroke-width="2" marker-end="url(#ag)"/>
+<text x="752" y="562" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#15803D" font-weight="800" text-anchor="start" letter-spacing="0">누끼 → 축 B</text>
+<text x="41" y="598" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="15" fill="#15803D" font-weight="800" text-anchor="start" letter-spacing="0">축 B · 농업적 정합성</text>
+<text x="230" y="598" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#64748B" font-weight="400" text-anchor="start" letter-spacing="0">실제 작물이라면 지켜야 할 규칙 — 실제 이미지만으로 학습 → 미지 생성기와 무관 · 후처리에 강함</text>
+<line x1="41" y1="608" x2="1439" y2="608" stroke="#E2E8F0" stroke-width="1.2"/>
+<rect x="41" y="622" width="452" height="168" rx="8" fill="#F0FDF4" stroke="#15803D" stroke-width="1.6"/>
+<path d="M41,630 a8,8 0 0 1 8,-8 h436 a8,8 0 0 1 8,8 v26 h-452 z" fill="#15803D"/>
+<text x="56" y="646" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="16.5" fill="#FFFFFF" font-weight="800" text-anchor="start" letter-spacing="0">B1</text>
+<text x="87" y="646" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="14" fill="#FFFFFF" font-weight="700" text-anchor="start" letter-spacing="0">형태 정합성</text>
+<rect x="389" y="662" width="94" height="20" rx="10" fill="#FFFFFF" stroke="#15803D" stroke-width="1.3"/>
+<text x="436" y="676" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#15803D" font-weight="800" text-anchor="middle" letter-spacing="0">종 확정 후</text>
+<text x="56" y="678" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#15803D" font-weight="700" text-anchor="start" letter-spacing="1.2">대상</text>
+<text x="56" y="695" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0">잎맥 위상 · 엽서(phyllotaxis) 배열 · 과실–잎 스케일</text>
+<text x="56" y="721" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#15803D" font-weight="700" text-anchor="start" letter-spacing="1.2">계량 방법</text>
+<text x="56" y="739" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">잎맥은 임의의 그물이 아니라 통수 효율과 손상 내성이</text>
+<text x="56" y="754" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">제약하는 계층 네트워크다. 무방향 그래프로 추출해</text>
+<text x="56" y="769" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">분기 차수 분포 · 폐루프 비율 · 세맥 길이 비율을 계산</text>
+<rect x="515" y="622" width="452" height="168" rx="8" fill="#F0FDF4" stroke="#15803D" stroke-width="1.6"/>
+<path d="M515,630 a8,8 0 0 1 8,-8 h436 a8,8 0 0 1 8,8 v26 h-452 z" fill="#15803D"/>
+<text x="530" y="646" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="16.5" fill="#FFFFFF" font-weight="800" text-anchor="start" letter-spacing="0">B2</text>
+<text x="561" y="646" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="14" fill="#FFFFFF" font-weight="700" text-anchor="start" letter-spacing="0">시설 구조물</text>
+<rect x="863" y="662" width="94" height="20" rx="10" fill="#FFFFFF" stroke="#15803D" stroke-width="1.3"/>
+<text x="910" y="676" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#15803D" font-weight="800" text-anchor="middle" letter-spacing="0">종 무관 · 우선</text>
+<text x="530" y="678" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#15803D" font-weight="700" text-anchor="start" letter-spacing="1.2">대상</text>
+<text x="530" y="695" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0">점적관수 라인 · 유인줄 · 하이와이어 · 피복재 격자</text>
+<text x="530" y="721" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#15803D" font-weight="700" text-anchor="start" letter-spacing="1.2">계량 방법</text>
+<text x="530" y="739" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">Hough 직선 검출 개수·길이 분포, 자기상관/FFT 주기</text>
+<text x="530" y="754" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">피크의 선명도. 생성 모델은 긴 직선과 등간격 반복에서</text>
+<text x="530" y="769" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">실패한다</text>
+<rect x="989" y="622" width="452" height="168" rx="8" fill="#F0FDF4" stroke="#15803D" stroke-width="1.6"/>
+<path d="M989,630 a8,8 0 0 1 8,-8 h436 a8,8 0 0 1 8,8 v26 h-452 z" fill="#15803D"/>
+<text x="1004" y="646" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="16.5" fill="#FFFFFF" font-weight="800" text-anchor="start" letter-spacing="0">B3</text>
+<text x="1035" y="646" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="14" fill="#FFFFFF" font-weight="700" text-anchor="start" letter-spacing="0">생육 정합성</text>
+<rect x="1337" y="662" width="94" height="20" rx="10" fill="#FFFFFF" stroke="#15803D" stroke-width="1.3"/>
+<text x="1384" y="676" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#15803D" font-weight="800" text-anchor="middle" letter-spacing="0">종 확정 후</text>
+<text x="1004" y="678" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#15803D" font-weight="700" text-anchor="start" letter-spacing="1.2">대상</text>
+<text x="1004" y="695" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0">병징의 해부학적 일관성 · 착과 순서 · 생육단계</text>
+<text x="1004" y="721" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#15803D" font-weight="700" text-anchor="start" letter-spacing="1.2">계량 방법</text>
+<text x="1004" y="739" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">병반이 잎맥을 따라 번지는가 무작위로 찍혀 있는가.</text>
+<text x="1004" y="754" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">마스크 내 병반 분포와 잎맥 골격의 정렬도를 측정</text>
+<line x1="267.0" y1="790" x2="267.0" y2="818" stroke="#94A3B8" stroke-width="1.6"/>
+<line x1="741.0" y1="790" x2="741.0" y2="818" stroke="#94A3B8" stroke-width="1.6"/>
+<line x1="1215.0" y1="790" x2="1215.0" y2="818" stroke="#94A3B8" stroke-width="1.6"/>
+<line x1="267.0" y1="818" x2="1215.0" y2="818" stroke="#94A3B8" stroke-width="1.6"/>
+<line x1="740" y1="818" x2="740" y2="845" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="330" y="852" width="820" height="62" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.4"/>
+<text x="740" y="879" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="14" fill="#0F172A" font-weight="800" text-anchor="middle" letter-spacing="0">score  =  w1·A1 + w2·A2 + w3·A3 + w4·A4 + w5·A5  +  v1·B1 + v2·B2 + v3·B3</text>
+<text x="740" y="899" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#64748B" font-weight="400" text-anchor="middle" letter-spacing="0">가중치는 Leave-One-Generator-Out 교차검증으로 결정 · 축 A와 축 B의 배분은 별도 관리</text>
+<line x1="740" y1="914" x2="740" y2="939" stroke="#94A3B8" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="540" y="946" width="400" height="44" rx="22" fill="#0F172A"/>
+<text x="740" y="974" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="15" fill="#FFFFFF" font-weight="700" text-anchor="middle" letter-spacing="0">score ≥ 임계값 τ   →   생성 이미지</text>
+<line x1="40" y1="1008" x2="1440" y2="1008" stroke="#E2E8F0" stroke-width="1.2"/>
+<text x="40" y="1038" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="17" fill="#0F172A" font-weight="800" text-anchor="start" letter-spacing="0">핵심 근거 — 왜 이렇게 나누는가</text>
+<rect x="40" y="1060" width="690" height="246" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4"/>
+<rect x="40" y="1060" width="5" height="246" rx="2.5" fill="#0F766E"/>
+<text x="62" y="1090" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="13.5" fill="#0F766E" font-weight="800" text-anchor="start" letter-spacing="0">① VAE 디코더는 생성 계열을 가로지르는 공용 부품이다</text>
+<rect x="62" y="1116" width="240" height="25" rx="6" fill="#F0FDFA" stroke="#0F766E" stroke-width="1"/>
+<text x="74" y="1133" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#0F766E" font-weight="700" text-anchor="start" letter-spacing="0">확산-U-Net  (SD1.5 · SDXL)</text>
+<line x1="302" y1="1128" x2="340" y2="1128" stroke="#0F766E" stroke-width="1.2"/>
+<rect x="62" y="1148" width="240" height="25" rx="6" fill="#F0FDFA" stroke="#0F766E" stroke-width="1"/>
+<text x="74" y="1165" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#0F766E" font-weight="700" text-anchor="start" letter-spacing="0">플로우 매칭 DiT  (SD3 · FLUX)</text>
+<line x1="302" y1="1160" x2="340" y2="1160" stroke="#0F766E" stroke-width="1.2"/>
+<rect x="62" y="1180" width="240" height="25" rx="6" fill="#F0FDFA" stroke="#0F766E" stroke-width="1"/>
+<text x="74" y="1197" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#0F766E" font-weight="700" text-anchor="start" letter-spacing="0">증류·소수스텝  (Turbo · schnell)</text>
+<line x1="302" y1="1192" x2="340" y2="1192" stroke="#0F766E" stroke-width="1.2"/>
+<rect x="62" y="1212" width="240" height="25" rx="6" fill="#F0FDFA" stroke="#0F766E" stroke-width="1"/>
+<text x="74" y="1229" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#0F766E" font-weight="700" text-anchor="start" letter-spacing="0">잠재 인페인팅  (유형 ①②의 절반)</text>
+<line x1="302" y1="1224" x2="340" y2="1224" stroke="#0F766E" stroke-width="1.2"/>
+<line x1="340" y1="1128" x2="340" y2="1224" stroke="#0F766E" stroke-width="1.6"/>
+<line x1="340" y1="1168" x2="390" y2="1168" stroke="#0F766E" stroke-width="2" marker-end="url(#at)"/>
+<rect x="400" y="1144" width="148" height="48" rx="8" fill="#0F766E"/>
+<text x="474" y="1164" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="13" fill="#FFFFFF" font-weight="800" text-anchor="middle" letter-spacing="0">VAE 디코더</text>
+<text x="474" y="1181" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#CCFBF1" font-weight="400" text-anchor="middle" letter-spacing="0">(잠재 → 픽셀)</text>
+<line x1="548" y1="1168" x2="596" y2="1168" stroke="#0F766E" stroke-width="2" marker-end="url(#at)"/>
+<text x="604" y="1172" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0">출력 픽셀</text>
+<line x1="474" y1="1228" x2="474" y2="1200" stroke="#0F766E" stroke-width="2" marker-end="url(#at)"/>
+<rect x="414" y="1230" width="120" height="23" rx="11" fill="#FFFFFF" stroke="#0F766E" stroke-width="1.5"/>
+<text x="474" y="1246" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10" fill="#0F766E" font-weight="800" text-anchor="middle" letter-spacing="0">A1 이 여기를 본다</text>
+<text x="62" y="1272" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">지표 하나가 네 계열을 동시에 겨냥한다. 운영측 생성기가 비공개라는 본 대회의</text>
+<text x="62" y="1288" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">근본 난제에 대한 주된 대비책이다.</text>
+<rect x="750" y="1060" width="690" height="246" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4"/>
+<rect x="750" y="1060" width="5" height="246" rx="2.5" fill="#1D4ED8"/>
+<text x="772" y="1090" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="13.5" fill="#1D4ED8" font-weight="800" text-anchor="start" letter-spacing="0">② 작물 분할은 한 번, 용도는 두 개</text>
+<rect x="772" y="1112" width="116" height="40" rx="8" fill="#0F172A"/>
+<text x="830" y="1130" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#FFFFFF" font-weight="800" text-anchor="middle" letter-spacing="0">마스크 M</text>
+<text x="830" y="1145" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="9.5" fill="#94A3B8" font-weight="400" text-anchor="middle" letter-spacing="0">분할 1회</text>
+<line x1="888" y1="1132" x2="916" y2="1132" stroke="#94A3B8" stroke-width="1.6"/>
+<line x1="916" y1="1114" x2="916" y2="1172" stroke="#94A3B8" stroke-width="1.6"/>
+<line x1="916" y1="1132" x2="946" y2="1132" stroke="#15803D" stroke-width="1.8" marker-end="url(#ag)"/>
+<rect x="954" y="1114" width="452" height="36" rx="7" fill="#FFFFFF" stroke="#15803D" stroke-width="1.4"/>
+<text x="968" y="1130" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#15803D" font-weight="800" text-anchor="start" letter-spacing="0">누끼  →  축 B 농업 정합성</text>
+<text x="968" y="1144" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10" fill="#64748B" font-weight="400" text-anchor="start" letter-spacing="0">작물만 남겨 형태·구조를 본다</text>
+<line x1="916" y1="1174" x2="946" y2="1174" stroke="#1D4ED8" stroke-width="1.8" marker-end="url(#ab)"/>
+<rect x="954" y="1156" width="452" height="36" rx="7" fill="#FFFFFF" stroke="#1D4ED8" stroke-width="1.4"/>
+<text x="968" y="1172" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11.5" fill="#1D4ED8" font-weight="800" text-anchor="start" letter-spacing="0">영역 정의  →  A4 영역 대조</text>
+<text x="968" y="1186" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10" fill="#64748B" font-weight="400" text-anchor="start" letter-spacing="0">안팎 통계를 대조한다 (자르지 않는다)</text>
+<text x="772" y="1216" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10" fill="#0F172A" font-weight="800" text-anchor="start" letter-spacing="0.8">유형 ①② 분담</text>
+<rect x="772" y="1226" width="38" height="19" rx="5" fill="#1D4ED8"/>
+<text x="791" y="1240" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10" fill="#FFFFFF" font-weight="800" text-anchor="middle" letter-spacing="0">G-1</text>
+<text x="818" y="1240" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0">픽셀 공간 합성 (알파·Poisson·하모나이제이션)</text>
+<text x="1102" y="1240" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#1D4ED8" font-weight="700" text-anchor="start" letter-spacing="0">영역 불일치가 남는다  →  A4</text>
+<rect x="772" y="1250" width="38" height="19" rx="5" fill="#0F766E"/>
+<text x="791" y="1264" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10" fill="#FFFFFF" font-weight="800" text-anchor="middle" letter-spacing="0">G-2</text>
+<text x="818" y="1264" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#0F172A" font-weight="700" text-anchor="start" letter-spacing="0">잠재 공간 재생성 (SD 인페인팅·img2img)</text>
+<text x="1102" y="1264" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#0F766E" font-weight="700" text-anchor="start" letter-spacing="0">전체 재디코딩  →  영역 대조 무력  →  A1</text>
+<text x="772" y="1292" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11" fill="#475569" font-weight="400" text-anchor="start" letter-spacing="0">분할 비용은 1회인데 판별 근거는 둘이 된다. 유형 ①②는 두 갈래로 갈리고 탐지 원리가 정반대라, A4와 A1이 나눠 담당한다.</text>
+<text x="40" y="1348" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#64748B" font-weight="400" text-anchor="start" letter-spacing="0">제1회 전국 농과계 대학 농업 AI 경진대회 · 이미지 데이터 신뢰성 판별 미션</text>
+<text x="1440" y="1348" font-family="NanumGothic, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="10.5" fill="#64748B" font-weight="400" text-anchor="end" letter-spacing="0">2026-09-07</text>
 </svg>
